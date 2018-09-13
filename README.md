@@ -9,7 +9,7 @@ In this C++ project, I use a Proportional-Integral-Derivative Controller, or PID
 
 *Optimize init parameters for each PID coefficient
 Results / Reflection
-A video of the simulated car driving around the track can be found here.
+A video of the simulated car driving around the track can be found [here](https://github.com/localmaxima/p4_pid/blob/master/p4_pid.mp4). The video freezes at some points, this comes from the recording software but the car drives smoothly otherwise.
 
 ## Components of PID
 The actual implementation of code for a basic PID controller is fairly straightforward, but making the controller actually perform well is the tough part. Having knowledge of each part of "PID" is important:
@@ -20,6 +20,8 @@ The "I" for integral sums up all CTEs up to that point, such that too many negat
 
 The "D" for derivate is the change in CTE from one value to the next. This means that 1) if the derivative is quickly changing, the car will correct itself (i.e. higher steering angle) faster, such as in the case of a curve, and 2) if the car is moving outward from the middle, this will cause the steering to get larger (as the derivative sign will match the proportional sign), but if the car is moving toward the center (meaning the derivative value will be negative), the car's steering angle will get smoothed out, leading to a more smoother driving experience. Too high of a coefficient leads to almost constant steering angle changes of large degrees, where although the car will be well-centered it can hardly move. Too low of a D coefficient will lead to the oscillations being too high with more overshooting.
 
+## How chose PID values
+PID values were manually selected. I started with twiddle then tuned the parameters manually afterwards based on behaviour of the car on the track to yeild best on track driving.
 
 # CarND-Controls-PID
 Self-Driving Car Engineer Nanodegree Program
